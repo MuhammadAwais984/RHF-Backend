@@ -14,8 +14,14 @@
     "upgrade": "npx @strapi/upgrade latest",
     "upgrade:dry": "npx @strapi/upgrade latest --dry"
   },
+  "workspaces": [
+    "./src/plugins/strapi-plugin-ckeditor"
+  ],
   "dependencies": {
     "@_sh/strapi-plugin-ckeditor": "^7.1.0",
+    "@ckeditor/ckeditor5-build-classic": "^41.4.2",
+    "@ckeditor/ckeditor5-react": "^11.0.1",
+    "@ckeditor/strapi-plugin-ckeditor": "^1.1.2",
     "@strapi/plugin-cloud": "5.38.0",
     "@strapi/plugin-color-picker": "^5.38.0",
     "@strapi/plugin-users-permissions": "5.38.0",

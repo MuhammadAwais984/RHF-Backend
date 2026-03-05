@@ -46,7 +46,13 @@ export interface RecipeQuestionsAnswer extends Struct.ComponentSchema {
     displayName: 'QuestionsAnswer';
   };
   attributes: {
-    answer: Schema.Attribute.RichText;
+    answer: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
     question: Schema.Attribute.String;
   };
 }
@@ -57,7 +63,13 @@ export interface RecipeSteps extends Struct.ComponentSchema {
     displayName: 'Steps';
   };
   attributes: {
-    instruction: Schema.Attribute.RichText;
+    instruction: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
     stepNumber: Schema.Attribute.Integer;
     StepsImages: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',

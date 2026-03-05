@@ -24,7 +24,11 @@
       "targetField": "title"
     },
     "description": {
-      "type": "richtext"
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      }
     },
     "metaDescription": {
       "type": "text"
@@ -50,9 +54,6 @@
     },
     "chefNoteTitle": {
       "type": "string"
-    },
-    "chefsNote": {
-      "type": "richtext"
     },
     "chef": {
       "type": "string"
@@ -156,6 +157,13 @@
       "relation": "oneToMany",
       "target": "api::review.review",
       "mappedBy": "recipe"
+    },
+    "chefsNote": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      }
     }
   }
 }

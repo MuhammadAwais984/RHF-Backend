@@ -584,7 +584,13 @@ export interface ApiRecipeRecipe extends Struct.CollectionTypeSchema {
     chefDescription: Schema.Attribute.Text;
     chefImage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     chefNoteTitle: Schema.Attribute.String;
-    chefsNote: Schema.Attribute.RichText;
+    chefsNote: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
     cookTime: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     coverImages: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
@@ -593,7 +599,13 @@ export interface ApiRecipeRecipe extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.RichText;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
     favouritesCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     ingredients: Schema.Attribute.DynamicZone<['recipe.ingredients']>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -650,6 +662,8 @@ export interface ApiReviewReview extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    color: Schema.Attribute.String &
+      Schema.Attribute.CustomField<'plugin::color-picker.color'>;
     comment: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -661,6 +675,13 @@ export interface ApiReviewReview extends Struct.CollectionTypeSchema {
       'api::review.review'
     > &
       Schema.Attribute.Private;
+    metaDescription: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     recipe: Schema.Attribute.Relation<'manyToOne', 'api::recipe.recipe'>;
