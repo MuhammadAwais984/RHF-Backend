@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "meal_types",
+  "info": {
+    "singularName": "meal-type",
+    "pluralName": "meal-types",
+    "displayName": "MealType"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Name"
+    },
+    "recipes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::recipe.recipe",
+      "inversedBy": "meal_types"
+    }
+  }
+}

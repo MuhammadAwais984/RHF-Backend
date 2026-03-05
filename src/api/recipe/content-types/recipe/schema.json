@@ -1,0 +1,161 @@
+{
+  "kind": "collectionType",
+  "collectionName": "recipes",
+  "info": {
+    "singularName": "recipe",
+    "pluralName": "recipes",
+    "displayName": "Recipe"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "metaDescription": {
+      "type": "text"
+    },
+    "coverImages": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "recipeStatus": {
+      "type": "enumeration",
+      "default": "DRAFT",
+      "enum": [
+        "DRAFT",
+        "PUBLISHED",
+        "ARCHIVED"
+      ]
+    },
+    "chefNoteTitle": {
+      "type": "string"
+    },
+    "chefsNote": {
+      "type": "richtext"
+    },
+    "chef": {
+      "type": "string"
+    },
+    "chefDescription": {
+      "type": "text"
+    },
+    "chefImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "authorName": {
+      "type": "string"
+    },
+    "authorDescription": {
+      "type": "text"
+    },
+    "authorImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "preptime": {
+      "type": "integer",
+      "default": 0
+    },
+    "cookTime": {
+      "type": "integer",
+      "default": 0
+    },
+    "servings": {
+      "type": "integer",
+      "default": 0
+    },
+    "recipe_category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::recipe-category.recipe-category",
+      "inversedBy": "recipes"
+    },
+    "meal_types": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::meal-type.meal-type",
+      "mappedBy": "recipes"
+    },
+    "occasions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::occasion.occasion",
+      "mappedBy": "recipes"
+    },
+    "nutrition": {
+      "type": "component",
+      "component": "recipe.nutrition",
+      "repeatable": false
+    },
+    "ingredients": {
+      "type": "dynamiczone",
+      "components": [
+        "recipe.ingredients"
+      ]
+    },
+    "steps": {
+      "type": "dynamiczone",
+      "components": [
+        "recipe.steps"
+      ]
+    },
+    "questionAnswer": {
+      "type": "dynamiczone",
+      "components": [
+        "recipe.questions-answer"
+      ]
+    },
+    "viewsCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "favouritesCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "reviewCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "recipe"
+    }
+  }
+}

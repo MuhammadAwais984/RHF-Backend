@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_recipe_questions_answers",
+  "info": {
+    "displayName": "QuestionsAnswer"
+  },
+  "options": {},
+  "attributes": {
+    "question": {
+      "type": "string"
+    },
+    "answer": {
+      "type": "richtext"
+    }
+  },
+  "config": {}
+}

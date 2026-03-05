@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_recipe_steps",
+  "info": {
+    "displayName": "Steps"
+  },
+  "options": {},
+  "attributes": {
+    "stepNumber": {
+      "type": "integer"
+    },
+    "StepsImages": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "instruction": {
+      "type": "richtext"
+    }
+  },
+  "config": {}
+}

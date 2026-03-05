@@ -1,0 +1,130 @@
+f537ac45a8b33988b83e90864f29753ee76a45614df01da45673b9de606bae99b2e8c12dc93966650db32381e3b1d9ac7adbaf9bce78085a5a4fb12671564bd7e742131f18668a09fe6b607e6ed029d4ae5177a4b099479f3115a8a28715d4a68360e755c68fcb3e7402bb77eba6ccc3e2fd97e5e8aef62955c18a92bcde2272
+npm run develop --host 192.168.1.6
+
+npm list @strapi/strapi
+npx @strapi/upgrade latest
+npm run build
+
+✅ Step 1 — Install PostgreSQL on Your VPS
+
+If PostgreSQL is not installed yet:
+
+Ubuntu / Debian VPS
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+
+Start service:
+
+sudo systemctl start postgresql
+sudo systemctl enable postgresql
+✅ Step 2 — Create Database + User (IMPORTANT)
+
+Login to postgres shell:
+
+sudo -u postgres psql
+
+Now create DB + user:
+
+CREATE DATABASE recipe_cms;
+CREATE USER strapi_user WITH PASSWORD 'StrongPassword123';
+ALTER ROLE strapi_user SET client_encoding TO 'utf8';
+ALTER ROLE strapi_user SET default_transaction_isolation TO 'read committed';
+ALTER ROLE strapi_user SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE recipe_cms TO strapi_user;
+
+Exit:
+
+\q
+✅ Step 3 — Install PostgreSQL Driver in Your Strapi Project
+
+Inside your Strapi project folder:
+
+npm install pg
+
+Strapi uses pg to talk to PostgreSQL.
+
+✅ Step 4 — Replace SQLite Config with PostgreSQL Config
+
+Open:
+
+/config/database.js
+
+Delete SQLite config and replace with this:
+
+const path = require("path");
+
+module.exports = ({ env }) => ({
+connection: {
+client: "postgres",
+connection: {
+host: env("DATABASE_HOST", "127.0.0.1"),
+port: env.int("DATABASE_PORT", 5432),
+database: env("DATABASE_NAME", "recipe_cms"),
+user: env("DATABASE_USERNAME", "strapi_user"),
+password: env("DATABASE_PASSWORD", "StrongPassword123"),
+ssl: env.bool("DATABASE_SSL", false),
+},
+pool: {
+min: 2,
+max: 10,
+},
+acquireConnectionTimeout: 60000,
+},
+});
+✅ Step 5 — Add Environment Variables (VERY IMPORTANT)
+
+Create / edit:
+
+.env
+
+Add:
+
+DATABASE_CLIENT=postgres
+DATABASE_HOST=127.0.0.1
+DATABASE_PORT=5432
+DATABASE_NAME=recipe_cms
+DATABASE_USERNAME=strapi_user
+DATABASE_PASSWORD=StrongPassword123
+DATABASE_SSL=false
+✅ Step 6 — DELETE SQLite File (Critical)
+
+Remove old database file:
+
+rm .tmp/data.db
+rm -rf .tmp
+
+SQLite must NOT exist anymore.
+
+✅ Step 7 — Rebuild Strapi (Creates PostgreSQL Tables)
+
+Run:
+
+npm run build
+npm run develop
+
+Strapi will now:
+
+✔ Connect to PostgreSQL
+✔ Auto-create all tables
+✔ Rebuild schema inside Postgres
+
+✅ Step 8 — Recreate Admin User
+
+Because SQLite data is gone, create new admin:
+
+Open browser:
+
+http://your-vps-ip:1337/admin
+
+Create admin again.
+
+⚠️ Step 9 — Migrate Old Data (If Needed)
+
+If you had real data in SQLite, you must export it first.
+
+You can export using:
+
+npm run strapi export
+npm run strapi export
+
+NODE_ENV=production pm2 start npm --name nextjs -- start

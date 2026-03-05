@@ -1,0 +1,55 @@
+{
+  "collectionName": "components_recipe_nutritions",
+  "info": {
+    "displayName": "Nutrition"
+  },
+  "options": {},
+  "attributes": {
+    "source": {
+      "type": "string"
+    },
+    "calories": {
+      "type": "decimal"
+    },
+    "totalFat": {
+      "type": "integer"
+    },
+    "saturatedFat": {
+      "type": "integer"
+    },
+    "cholesterol": {
+      "type": "integer"
+    },
+    "sodium": {
+      "type": "integer"
+    },
+    "carbohydrates": {
+      "type": "integer"
+    },
+    "fiber": {
+      "type": "integer"
+    },
+    "sugars": {
+      "type": "integer"
+    },
+    "protein": {
+      "type": "integer"
+    },
+    "vitaminA": {
+      "type": "integer"
+    },
+    "vitaminC": {
+      "type": "integer"
+    },
+    "calcium": {
+      "type": "integer"
+    },
+    "iron": {
+      "type": "integer"
+    },
+    "nutritionSubtitle": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}
