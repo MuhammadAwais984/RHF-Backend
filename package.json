@@ -14,9 +14,6 @@
     "upgrade": "npx @strapi/upgrade latest",
     "upgrade:dry": "npx @strapi/upgrade latest --dry"
   },
-  "workspaces": [
-    "./src/plugins/strapi-plugin-ckeditor"
-  ],
   "dependencies": {
     "@_sh/strapi-plugin-ckeditor": "^7.1.0",
     "@ckeditor/ckeditor5-build-classic": "^41.4.2",
