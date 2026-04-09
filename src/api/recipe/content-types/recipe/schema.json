@@ -95,6 +95,12 @@
       "type": "integer",
       "default": 0
     },
+    "marinateTime": {
+      "type": "integer"
+    },
+    "soakTime": {
+      "type": "integer"
+    },
     "servings": {
       "type": "integer",
       "default": 0

@@ -614,6 +614,7 @@ export interface ApiRecipeRecipe extends Struct.CollectionTypeSchema {
       'api::recipe.recipe'
     > &
       Schema.Attribute.Private;
+    marinateTime: Schema.Attribute.Integer;
     meal_types: Schema.Attribute.Relation<
       'manyToMany',
       'api::meal-type.meal-type'
@@ -639,6 +640,7 @@ export interface ApiRecipeRecipe extends Struct.CollectionTypeSchema {
     reviews: Schema.Attribute.Relation<'oneToMany', 'api::review.review'>;
     servings: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     slug: Schema.Attribute.UID<'title'>;
+    soakTime: Schema.Attribute.Integer;
     steps: Schema.Attribute.DynamicZone<['recipe.steps']>;
     subtitle: Schema.Attribute.String;
     title: Schema.Attribute.String &
