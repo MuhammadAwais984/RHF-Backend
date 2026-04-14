@@ -591,7 +591,6 @@ export interface ApiRecipeRecipe extends Struct.CollectionTypeSchema {
           preset: 'defaultHtml';
         }
       >;
-    cookTime: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     coverImages: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
@@ -614,7 +613,6 @@ export interface ApiRecipeRecipe extends Struct.CollectionTypeSchema {
       'api::recipe.recipe'
     > &
       Schema.Attribute.Private;
-    marinateTime: Schema.Attribute.Integer;
     meal_types: Schema.Attribute.Relation<
       'manyToMany',
       'api::meal-type.meal-type'
@@ -625,22 +623,20 @@ export interface ApiRecipeRecipe extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::occasion.occasion'
     >;
-    preptime: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     publishedAt: Schema.Attribute.DateTime;
     questionAnswer: Schema.Attribute.DynamicZone<['recipe.questions-answer']>;
     recipe_category: Schema.Attribute.Relation<
       'manyToOne',
       'api::recipe-category.recipe-category'
     >;
+    recipeStats: Schema.Attribute.DynamicZone<['recipe.recipe-stats']>;
     recipeStatus: Schema.Attribute.Enumeration<
       ['DRAFT', 'PUBLISHED', 'ARCHIVED']
     > &
       Schema.Attribute.DefaultTo<'DRAFT'>;
     reviewCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     reviews: Schema.Attribute.Relation<'oneToMany', 'api::review.review'>;
-    servings: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     slug: Schema.Attribute.UID<'title'>;
-    soakTime: Schema.Attribute.Integer;
     steps: Schema.Attribute.DynamicZone<['recipe.steps']>;
     subtitle: Schema.Attribute.String;
     title: Schema.Attribute.String &

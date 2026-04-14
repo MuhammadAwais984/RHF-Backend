@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_recipe_recipe_stats",
+  "info": {
+    "displayName": "recipe-stats"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "clock",
+        "flame",
+        "timer",
+        "users",
+        "activity"
+      ]
+    },
+    "label": {
+      "type": "string"
+    },
+    "value": {
+      "type": "integer"
+    }
+  },
+  "config": {}
+}

@@ -57,6 +57,20 @@ export interface RecipeQuestionsAnswer extends Struct.ComponentSchema {
   };
 }
 
+export interface RecipeRecipeStats extends Struct.ComponentSchema {
+  collectionName: 'components_recipe_recipe_stats';
+  info: {
+    displayName: 'recipe-stats';
+  };
+  attributes: {
+    icon: Schema.Attribute.Enumeration<
+      ['clock', 'flame', 'timer', 'users', 'activity']
+    >;
+    label: Schema.Attribute.String;
+    value: Schema.Attribute.Integer;
+  };
+}
+
 export interface RecipeSteps extends Struct.ComponentSchema {
   collectionName: 'components_recipe_steps';
   info: {
@@ -70,7 +84,6 @@ export interface RecipeSteps extends Struct.ComponentSchema {
           preset: 'defaultHtml';
         }
       >;
-    stepNumber: Schema.Attribute.Integer;
     StepsImages: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
@@ -84,6 +97,7 @@ declare module '@strapi/strapi' {
       'recipe.ingredients': RecipeIngredients;
       'recipe.nutrition': RecipeNutrition;
       'recipe.questions-answer': RecipeQuestionsAnswer;
+      'recipe.recipe-stats': RecipeRecipeStats;
       'recipe.steps': RecipeSteps;
     }
   }

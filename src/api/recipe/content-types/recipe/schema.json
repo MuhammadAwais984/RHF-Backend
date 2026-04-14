@@ -87,24 +87,6 @@
         "audios"
       ]
     },
-    "preptime": {
-      "type": "integer",
-      "default": 0
-    },
-    "cookTime": {
-      "type": "integer",
-      "default": 0
-    },
-    "marinateTime": {
-      "type": "integer"
-    },
-    "soakTime": {
-      "type": "integer"
-    },
-    "servings": {
-      "type": "integer",
-      "default": 0
-    },
     "recipe_category": {
       "type": "relation",
       "relation": "manyToOne",
@@ -170,6 +152,12 @@
       "options": {
         "preset": "defaultHtml"
       }
+    },
+    "recipeStats": {
+      "type": "dynamiczone",
+      "components": [
+        "recipe.recipe-stats"
+      ]
     }
   }
 }
