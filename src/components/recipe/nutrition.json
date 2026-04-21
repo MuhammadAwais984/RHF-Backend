@@ -49,6 +49,24 @@
     },
     "nutritionSubtitle": {
       "type": "text"
+    },
+    "vitaminD": {
+      "type": "integer"
+    },
+    "vitaminB12": {
+      "type": "integer"
+    },
+    "folate": {
+      "type": "integer"
+    },
+    "magnesium": {
+      "type": "integer"
+    },
+    "zinc": {
+      "type": "integer"
+    },
+    "phosphorus": {
+      "type": "integer"
     }
   },
   "config": {}

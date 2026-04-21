@@ -27,8 +27,11 @@ export interface RecipeNutrition extends Struct.ComponentSchema {
     carbohydrates: Schema.Attribute.Integer;
     cholesterol: Schema.Attribute.Integer;
     fiber: Schema.Attribute.Integer;
+    folate: Schema.Attribute.Integer;
     iron: Schema.Attribute.Integer;
+    magnesium: Schema.Attribute.Integer;
     nutritionSubtitle: Schema.Attribute.Text;
+    phosphorus: Schema.Attribute.Integer;
     protein: Schema.Attribute.Integer;
     saturatedFat: Schema.Attribute.Integer;
     sodium: Schema.Attribute.Integer;
@@ -36,7 +39,10 @@ export interface RecipeNutrition extends Struct.ComponentSchema {
     sugars: Schema.Attribute.Integer;
     totalFat: Schema.Attribute.Integer;
     vitaminA: Schema.Attribute.Integer;
+    vitaminB12: Schema.Attribute.Integer;
     vitaminC: Schema.Attribute.Integer;
+    vitaminD: Schema.Attribute.Integer;
+    zinc: Schema.Attribute.Integer;
   };
 }
 
